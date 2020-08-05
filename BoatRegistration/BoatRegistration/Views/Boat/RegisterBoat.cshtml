@@ -1,0 +1,47 @@
+﻿@model BoatRegistration.Data.Model.Boat
+
+@{
+    ViewData["Title"] = "RegisterBoat";
+}
+
+<h1>RegisterBoat</h1>
+
+<h4>Boat</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegisterBoat">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="HourlyCharges" class="control-label"></label>
+                <input asp-for="HourlyCharges" class="form-control" />
+                <span asp-validation-for="HourlyCharges" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoatName" class="control-label"></label>
+                <input asp-for="BoatName" class="form-control" />
+                <span asp-validation-for="BoatName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="@Url.Action("Index", "Home")">Back to List</a>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+                };                
+    </script>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
